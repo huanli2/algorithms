@@ -77,7 +77,7 @@ int main()
     t2.right = &t5;
     cout << "input tree:  " << endl;
     printByPostorder(&t0);
-    cout << endl << "post_order_traversal" << endl;
+    cout << endl << "post_order_traversal: " << endl;
     print(postorderTraversal(&t0));
     getchar();
     return 0;
