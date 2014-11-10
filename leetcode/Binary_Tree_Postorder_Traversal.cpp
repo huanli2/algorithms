@@ -47,6 +47,23 @@ vector<int> postorderTraversal(TreeNode *root) {
     return res;
 }
 
+/* using stack, not modify the original tree */ 
+vector<int> postorderTraversal1(TreeNode *root) {
+    stack<TreeNode*> s;
+    vector<int> res;
+    TreeNode* cur;
+    if(root != NULL) s.push(root);
+    while(!s.empty()) {
+        cur = s.top();
+	s.pop();
+	res.push_back(cur->val);
+	if(cur->left != NULL) s.push(cur->left);
+	if(cur->right != NULL) s.push(cur->right);
+    }
+    reverse(res.begin(), res.end());
+    return res;
+}
+
 void print(vector<int> &v) {
     for(vector<int>::iterator t = v.begin(); t != v.end(); ++t) {
 	cout << *t << " ";
@@ -77,7 +94,9 @@ int main()
     t2.right = &t5;
     cout << "input tree:  " << endl;
     printByPostorder(&t0);
-    cout << endl << "post_order_traversal";
+    cout <<endl << "post_order_traversal using stack without modify the original tree: " << endl;
+    print(postorderTraversal1(&t0));
+    cout << "post_order_traversal modifing the original tree: " << endl;
     print(postorderTraversal(&t0));
     getchar();
     return 0;
