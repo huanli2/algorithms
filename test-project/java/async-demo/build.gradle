@@ -1,0 +1,22 @@
+group 'my.test'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    //mavenCentral()
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+}
+
+dependencies {
+
+    // jsoup HTML parser library @ http://jsoup.org/
+    compile('org.jsoup:jsoup:1.10.2')
+
+    testCompile(group: 'junit', name: 'junit', version: '4.11')
+}
+
